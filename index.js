@@ -91,6 +91,14 @@ async function run() {
 
         });
 
+         // delete a data from profile collection
+         app.delete('/hiredUsers/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await hiredUsersCollection.deleteOne(query);
+            res.json(result);
+        })
+
 
     }
     finally{
